@@ -1,5 +1,6 @@
 /* eslint-disable prefer-const */
 import { useEffect, useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 import type { IconType } from "react-icons";
 import { MdOutlineArrowOutward } from "react-icons/md";
 import { BiGridAlt } from "react-icons/bi";
@@ -16,8 +17,13 @@ import Card from "@/components/ui/Card";
 
 const About = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isLargeScreen = useMediaQuery({
+    query: "(min-width: 1024px)",
+  });
 
   useEffect(() => {
+    if (isLargeScreen) return; // Disable auto-scroll on large screens
+
     const container = scrollContainerRef.current;
     if (!container) return;
 
@@ -25,7 +31,10 @@ const About = () => {
     let frameId: number;
 
     const loopScroll = () => {
-      if (container.scrollLeft >= container.scrollWidth / 2) {
+      if (
+        container.scrollLeft >=
+        container.scrollWidth / 2
+      ) {
         container.scrollLeft = 0;
       } else {
         container.scrollLeft += scrollSpeed;
@@ -35,9 +44,10 @@ const About = () => {
 
     frameId = requestAnimationFrame(loopScroll);
 
-    // Optional: Pause on hover
+    // Pause/resume on hover
     const pause = () => cancelAnimationFrame(frameId);
-    const resume = () => (frameId = requestAnimationFrame(loopScroll));
+    const resume = () =>
+      (frameId = requestAnimationFrame(loopScroll));
 
     container.addEventListener("mouseenter", pause);
     container.addEventListener("mouseleave", resume);
@@ -47,7 +57,7 @@ const About = () => {
       container.removeEventListener("mouseenter", pause);
       container.removeEventListener("mouseleave", resume);
     };
-  }, []);
+  }, [isLargeScreen]);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -74,24 +84,43 @@ const About = () => {
     {
       type: "badges",
       badges: [
-        { icon: BiGridAlt, label: "customizable", align: "right" },
-        { icon: GoInfinity, label: "flexible", align: "left" },
-        { icon: GrPowerCycle, label: "full control", align: "right" },
+        {
+          icon: BiGridAlt,
+          label: "customizable",
+          align: "right",
+        },
+        {
+          icon: GoInfinity,
+          label: "flexible",
+          align: "left",
+        },
+        {
+          icon: GrPowerCycle,
+          label: "full control",
+          align: "right",
+        },
       ],
     },
   ];
+
+  const cardsToRender = isLargeScreen
+    ? cardList
+    : [...cardList, ...cardList];
 
   return (
     <section className="mt-7">
       <div className="max-w-xs mx-auto text-center">
         <h1 className="tracking-wider font-medium text-2xl">
           Your trusted world wide{" "}
-          <span className="text-[#7478F8]">investment firm</span>
+          <span className="text-[#7478F8]">
+            investment firm
+          </span>
         </h1>
         <p className="text-sm text-gray-500 pt-2.5">
-          G I F offers solutions across alternative assets real estate, private
-          equity and infrastructure delivering deep expertise, rigorous research
-          and disciplined execution worldwide.
+          G I F offers solutions across alternative assets
+          real estate, private equity and infrastructure
+          delivering deep expertise, rigorous research and
+          disciplined execution worldwide.
         </p>
         <div className="flex items-center gap-x-2 pt-6">
           <Button className="rounded-full bg-[#7478F8]! text-xs pr-2 font-normal flex items-center gap-x-2">
@@ -112,9 +141,12 @@ const About = () => {
         </div>
       </div>
 
-      <div className="pt-10 overflow-x-auto scrollbar" ref={scrollContainerRef}>
+      <div
+        className="pt-10 overflow-x-auto scrollbar"
+        ref={scrollContainerRef}
+      >
         <div className="flex gap-x-2 min-w-max px-4">
-          {[...cardList, ...cardList].map((card, idx) => (
+          {cardsToRender.map((card, idx) => (
             <motion.div
               key={idx}
               variants={cardVariants}
@@ -124,7 +156,9 @@ const About = () => {
               <Card
                 shadow="none"
                 className={`rounded-3xl! ${
-                  card.type === "profile" ? "w-[350px]!" : "w-56! h-56!"
+                  card.type === "profile"
+                    ? "w-[350px]!"
+                    : "w-56! h-56!"
                 } shrink-0`}
               >
                 {card.type === "text" && card.icon && (
@@ -133,7 +167,9 @@ const About = () => {
                       <card.icon className="text-[#7478F8] size-4" />
                     </div>
                     <div className="pb-5">
-                      <p className="text-xs font-medium pt-3">{card.title}</p>
+                      <p className="text-xs font-medium pt-3">
+                        {card.title}
+                      </p>
                       <p className="text-xs text-gray-400 pt-2.5 leading-5">
                         {card.description}
                       </p>
@@ -159,7 +195,9 @@ const About = () => {
                       </div>
                     </div>
                     <div className="text-left space-y-2.5 pb-5 pt-7">
-                      <h2 className="text-4xl font-medium">$299k</h2>
+                      <h2 className="text-4xl font-medium">
+                        $299k
+                      </h2>
                       <p className="text-xs text-gray-400">
                         Seed funding for your startup
                       </p>
@@ -173,7 +211,9 @@ const About = () => {
                         />
                       </div>
                       <div className="text-left pt-2.5">
-                        <p className="text-sm leading-2">Keep track of growth</p>
+                        <p className="text-sm leading-2">
+                          Keep track of growth
+                        </p>
                         <span className="text-xs text-gray-400">
                           Start investing today
                         </span>
@@ -188,10 +228,15 @@ const About = () => {
                       <div
                         key={i}
                         className={`flex justify-${
-                          badge.align === "left" ? "start" : "end"
+                          badge.align === "left"
+                            ? "start"
+                            : "end"
                         }`}
                       >
-                        <Badge icon={badge.icon} label={badge.label} />
+                        <Badge
+                          icon={badge.icon}
+                          label={badge.label}
+                        />
                       </div>
                     ))}
                   </div>
