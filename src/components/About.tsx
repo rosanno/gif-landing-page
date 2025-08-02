@@ -145,7 +145,7 @@ const About = () => {
         className="pt-10 overflow-x-auto scrollbar"
         ref={scrollContainerRef}
       >
-        <div className="flex gap-x-2 min-w-max px-4">
+        <div className="flex gap-x-2 min-w-max px-4 mt-5">
           {cardsToRender.map((card, idx) => (
             <motion.div
               key={idx}
@@ -227,10 +227,12 @@ const About = () => {
                     {card?.badges?.map((badge, i) => (
                       <div
                         key={i}
-                        className={`flex justify-${
-                          badge.align === "left"
-                            ? "start"
-                            : "end"
+                        className={`flex ${
+                          i === 0
+                            ? "justify-end"
+                            : i === 1
+                            ? "justify-start"
+                            : "justify-end"
                         }`}
                       >
                         <Badge
