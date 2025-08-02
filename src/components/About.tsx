@@ -108,29 +108,29 @@ const About = () => {
     : [...cardList, ...cardList];
 
   return (
-    <section className="mt-7">
-      <div className="max-w-xs mx-auto text-center">
-        <h1 className="tracking-wider font-medium text-2xl">
+    <section className="mt-7 lg:mt-20 max-w-[1490px] mx-auto">
+      <div className="max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto text-center">
+        <h1 className="tracking-wider font-medium text-2xl md:text-5xl lg:text-6xl md:leading-14 lg:leading-16">
           Your trusted world wide{" "}
           <span className="text-[#7478F8]">
             investment firm
           </span>
         </h1>
-        <p className="text-sm text-gray-500 pt-2.5">
+        <p className="text-sm text-gray-500 pt-2.5 md:w-xl lg:w-2xl mx-auto lg:mt-2">
           G I F offers solutions across alternative assets
           real estate, private equity and infrastructure
           delivering deep expertise, rigorous research and
           disciplined execution worldwide.
         </p>
-        <div className="flex items-center gap-x-2 pt-6">
-          <Button className="rounded-full bg-[#7478F8]! text-xs pr-2 font-normal flex items-center gap-x-2">
+        <div className="flex items-center justify-center gap-x-2 pt-6">
+          <Button className="rounded-full bg-[#7478F8]! text-xs lg:text-sm pr-2 font-normal flex items-center gap-x-2">
             Start invest today
             <div className="bg-white rounded-full p-1.5">
               <MdOutlineArrowOutward className="size-4 text-[#7478F8]" />
             </div>
           </Button>
           <Button
-            className="rounded-full text-xs text-black! border-black! font-normal pr-2 flex items-center gap-x-2"
+            className="rounded-full text-xs text-black! lg:text-sm border-black! font-normal pr-2 flex items-center gap-x-2"
             variant="outline"
           >
             View our story
@@ -142,10 +142,10 @@ const About = () => {
       </div>
 
       <div
-        className="pt-10 overflow-x-auto scrollbar"
+        className="pt-6 lg:pt-16 overflow-x-auto scrollbar"
         ref={scrollContainerRef}
       >
-        <div className="flex gap-x-2 min-w-max px-4 mt-5">
+        <div className="flex justify-center gap-x-2 md:gap-x-5 lg:gap-x-8 min-w-max px-4 mt-5">
           {cardsToRender.map((card, idx) => (
             <motion.div
               key={idx}
@@ -166,7 +166,7 @@ const About = () => {
                     <div className="bg-gray-300/20 rounded-lg w-fit p-2.5">
                       <card.icon className="text-[#7478F8] size-4" />
                     </div>
-                    <div className="pb-5">
+                    <div className="pb-5 lg:pt-3">
                       <p className="text-xs font-medium pt-3">
                         {card.title}
                       </p>

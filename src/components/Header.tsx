@@ -18,7 +18,7 @@ const Header = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <header className="px-4 lg:px-8 border-b border-gray-200/80 h-24 flex items-center">
+      <header className="px-4 lg:px-8 border-b border-gray-200/80 h-24 flex items-center max-w-[1490px] mx-auto">
         <div className="flex items-center justify-between w-full">
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -43,11 +43,13 @@ const Header = () => {
                 ))}
               </ul>
             </nav>
-            <div className="flex items-center gap-x-2 lg:bg-white rounded-full lg:pl-2 lg:pr-3 lg:py-1.5">
+            <div className="flex items-center gap-x-2 lg:bg-white rounded-full lg:pl-2 lg:pr-3 lg:ml-6 lg:py-1.5">
               <button className="bg-[#7478F8] p-2.5 lg:p-1 rounded-full">
                 <PiMagnifyingGlassThin className="size-6 lg:size-5 text-white" />
               </button>
-              <span className="text-sm hidden lg:inline-flex">Search</span>
+              <span className="text-sm hidden lg:inline-flex">
+                Search
+              </span>
             </div>
           </div>
           <div className="hidden lg:flex items-center gap-x-4">
