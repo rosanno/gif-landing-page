@@ -145,7 +145,7 @@ const About = () => {
         className="pt-6 lg:pt-16 overflow-x-auto scrollbar"
         ref={scrollContainerRef}
       >
-        <div className="flex justify-center gap-x-2 md:gap-x-5 lg:gap-x-8 min-w-max px-4 mt-5">
+        <div className="flex justify-center gap-x-2 md:gap-x-5 lg:gap-x-7 min-w-max px-4 mt-5">
           {cardsToRender.map((card, idx) => (
             <motion.div
               key={idx}
@@ -155,7 +155,7 @@ const About = () => {
             >
               <Card
                 shadow="none"
-                className={`rounded-3xl! ${
+                className={`rounded-4xl! ${
                   card.type === "profile"
                     ? "w-[350px]!"
                     : "w-56! h-56!"
@@ -170,7 +170,7 @@ const About = () => {
                       <p className="text-xs font-medium pt-3">
                         {card.title}
                       </p>
-                      <p className="text-xs text-gray-400 pt-2.5 leading-5">
+                      <p className="text-xs text-gray-400 pt-2.5 lg:pr-3 leading-5">
                         {card.description}
                       </p>
                     </div>
