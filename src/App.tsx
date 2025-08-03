@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import About from "@/components/About";
-
+import Approach from "@/components/Approach";
 
 const App = () => {
   return (
@@ -8,6 +8,7 @@ const App = () => {
       <Header />
       <main>
         <About />
+        <Approach />
       </main>
     </>
   );

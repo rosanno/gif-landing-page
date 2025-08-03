@@ -108,7 +108,7 @@ const About = () => {
     : [...cardList, ...cardList];
 
   return (
-    <section className="mt-7 lg:mt-20 max-w-[1490px] mx-auto">
+    <section className="mt-7 pb-16 lg:mt-20 max-w-[1490px] mx-auto">
       <div className="max-w-xs md:max-w-2xl lg:max-w-3xl mx-auto text-center">
         <h1 className="tracking-wider font-medium text-2xl md:text-5xl lg:text-6xl md:leading-14 lg:leading-16">
           Your trusted world wide{" "}
@@ -157,7 +157,7 @@ const About = () => {
                 shadow="none"
                 className={`rounded-4xl! ${
                   card.type === "profile"
-                    ? "w-[350px]!"
+                    ? "w-[300px]!"
                     : "w-56! h-56!"
                 } shrink-0`}
               >
